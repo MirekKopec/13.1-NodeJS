@@ -1,5 +1,8 @@
+var OSinfo = require('../modules/OSinfo');
+
 process.stdin.setEncoding('utf-8');
-process.stdout.write('Write -s for OS info, -v for Node version or /exit\n');
+
+process.stdout.write('Print: -o for OSInfo, -s for system language, -v for Node version or /exit\n');
 
 process.stdin.on('readable', function() {
     
@@ -17,6 +20,10 @@ process.stdin.on('readable', function() {
             process.exit();
             break;
 
+            case '-o':
+            OSinfo.print();
+            break;
+
             case '-v':
             console.log(process.versions);
             break;
@@ -28,5 +35,6 @@ process.stdin.on('readable', function() {
             default: 
             process.stderr.write('Wrong instruction!\n');
         }
+
     }
 });
